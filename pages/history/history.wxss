@@ -50,3 +50,12 @@
   color: #333;
   font-size: 24rpx;
 }
+
+.footTitle {
+  display: block;
+  height: 80rpx;
+  line-height: 40rpx;
+  padding: 0 5rpx;
+  font-size: 24rpx;
+  overflow: hidden;
+}

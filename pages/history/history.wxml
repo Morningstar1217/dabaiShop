@@ -1,23 +1,29 @@
 <!-- pages/history/history.wxml -->
+<import src="../../common/template/template.wxml"></import>
 <view class="container">
     <!-- 标题 -->
     <view class="favTitle">
         我的足迹
-        <view class="conso" bind:tap="clearFoot">清空</view>
+        <view class="conso {{consolePlat?'consoed':''}}" bind:tap="filterManager">
+            {{consoMsg}}
+        </view>
     </view>
-    <!-- 我的足迹商品 -->
-    <view class="footprints">
+    <!-- 精选商品展示模板 -->
+    <view class="featuredWrap">
         <block wx:for="{{footprint}}" wx:key="id">
-            <view class="footprint">
-                <image src="{{item.pic}}" mode="widthFix" />
-                <view class="footprintMsg">
-                    ￥{{item.price}}
-                    <view class="delBtn" bind:tap="delete" data-index="{{index}}">删除</view>
-                </view>
-            </view>
+            <template is="featuredComList" data="{{item,favPage,shopId,consolePlat,index:index}}"></template>
         </block>
         <view class="noGoods" wx:if="{{footprint.length==0}}">
             <image src="/images/nofoot.png" mode="widthFix" />
         </view>
+        <!-- 返回顶部 -->
+        <view class="toTop" bind:tap="toTop" wx:if="{{showTop}}">︿</view>
     </view>
+    <!-- 商品编辑 -->
+    <view class="consolePlatform" wx:if="{{consolePlat&&footprint.length!=0}}">
+        <view class="selectedAll" bind:tap="selectAll">全选</view>
+        <view class="delComs" bind:tap="deleteList">删除</view>
+    </view>
+    <!-- 全屏遮罩 -->
+    <template is="bigWrap" data="{{sureBuy,titleMsg,copysuccess}}"></template>
 </view>

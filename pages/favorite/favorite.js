@@ -52,8 +52,10 @@ Page({
             nogoods: true
           });
         } else {
+          const featuredComList = res.data.data;
+          featuredComList.reverse();
           that.setData({
-            featuredComList: res.data.data
+            featuredComList: featuredComList
           });
         }
       }

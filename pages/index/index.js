@@ -126,6 +126,7 @@ Page({
   },
   /* 复制优惠券 */
   goBuy: function(e) {
+    this.setFootprint(e);
     const sku = e.currentTarget.id;
     if (this.data.shopId == 0) {
       const url = this.data.host + this.data.goodsPromotionUrl;
@@ -136,7 +137,6 @@ Page({
       this.getCoupon(url, sku, goodUrl);
     }
     //添加足迹
-    this.setFootprint(e);
   },
   /* 关闭遮罩 */
   closeWrap: function() {
@@ -368,13 +368,26 @@ Page({
   },
   //足迹
   setFootprint: function(e) {
+    console.log(e);
     var footprint = wx.getStorageSync("footprint");
     if (!footprint) {
       footprint = [];
     }
+    var pingtai = "";
+    if (this.data.shopId == 0) {
+      pingtai = "pdd";
+    } else {
+      pingtai = "jd";
+    }
     const foot = {
       pic: e.currentTarget.dataset.pic,
-      price: e.currentTarget.dataset.price
+      price: e.currentTarget.dataset.price,
+      title: e.currentTarget.dataset.title,
+      sku: e.currentTarget.id,
+      couponLink: e.currentTarget.dataset.url,
+      market_price: e.currentTarget.dataset.marketprice,
+      price: e.currentTarget.dataset.price,
+      pingtai: pingtai
     };
     footprint.unshift(foot);
     wx.setStorage({
