@@ -1,0 +1,59 @@
+<!-- 商品列表 -->
+<template name="featuredComList">
+    <view class="featuredCom">
+        <view class="consoleCom" wx:if="{{consolePlat}}">
+            <icon wx:if="{{item.selected}}" type="success" color="red" catch:tap="change" data-index="{{index}}" />
+            <icon wx:else type="circle" catch:tap="change" data-index="{{index}}" />
+        </view>
+        <view class="featuredImg {{consolePlat?'consoleIng':''}}">
+            <image src="{{item.pic}}" class="comImg" />
+            <!-- <image src="/images/integral.png" class="integral" /> -->
+            <text class="score">{{item.score}}</text>
+        </view>
+        <view class="featuredComDetail {{consolePlat?'consoleIng':''}}">
+            <view class="featuredName">
+                <view wx:if="{{!favPage}}">
+                    <image src="/images/jd.png" class="shopImgJd" wx:if="{{shopId==1}}" />
+                    <image src="/images/pdd.png" class="shopImgPdd" wx:if="{{shopId==0}}" />
+                    {{item.title}}
+                </view>
+                <view wx:else>
+                    <image src="/images/jd.png" class="shopImgJd" wx:if="{{item.pingtai=='jd'}}" />
+                    <image src="/images/pdd.png" class="shopImgPdd" wx:if="{{item.pingtai=='pdd'}}" />
+                    {{item.title}}
+                </view>
+            </view>
+            <view class="priceShow">
+                <view class="priceWrap">
+                    <view class="priceNow">￥{{item.price}}</view>
+                    <view class="priceAgo">￥{{item.market_price}}</view>
+                </view>
+                <view class="coupon">{{filter.toInt(item.market_price-item.price)}}元券</view>
+            </view>
+        </view>
+        <image src="/images/favpage1.png" wx:if="{{!favPage}}" class="favPage" catch:tap="setCol" data-sku="{{item.sku}}" data-title="{{item.title}}" data-couponLink="{{item.couponLink}}" data-marketPrice="{{item.market_price}}" data-price="{{item.price}}" data-pic="{{item.pic}}" />
+        <view class="tobuyBtn" bind:tap="goBuy" id="{{item.sku}}" data-url="{{item.couponLink}}" data-pingtai="{{item.pingtai}}" data-title="{{item.title}}" data-marketPrice="{{item.market_price}}" data-price="{{item.price}}" data-pic="{{item.pic}}">
+            立即领券
+        </view>
+    </view>
+</template>
+<!-- 遮罩 -->
+<template name="bigWrap">
+    <view class="bigWrap" wx:if="{{sureBuy}}">
+        <view class="successMsg">
+            <view class="copySuccess" wx:if="{{copysuccess}}">
+                <view class="successTitle">复制成功</view>
+                <view class="shopMsg">请打开{{titleMsg}}购买即可</view>
+                <view class="successBtn">
+                    <view class="goBuyWay">购买教程</view>
+                    <view class="iKown" bind:tap="closeWrap">我知道了</view>
+                </view>
+            </view>
+            <view class="copySuccess" wx:else>
+                <view class="shopMsg">该商品优惠券已被抢光~\n再看看别的商品吧</view>
+                <view class="iKown2" bind:tap="closeWrap">我知道了</view>
+            </view>
+        </view>
+    </view>
+</template>
+<wxs src="../filter.wxs" module="filter"></wxs>

@@ -1,0 +1,45 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/history/history",
+    "pages/favorite/favorite",
+    "pages/main/main",
+    "pages/quan/quan",
+    "pages/search/search",
+    "pages/result/result",
+    "pages/start/start"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "大白找券",
+    "navigationBarTextStyle": "black",
+    "onReachBottomDistance": 100
+  },
+  "tabBar": {
+    "color": "#707070",
+    "selectedColor": "#d34353",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/images/icon/index (2).png",
+        "selectedIconPath": "/images/icon/index (1).png"
+      },
+      {
+        "pagePath": "pages/quan/quan",
+        "text": "搜索",
+        "iconPath": "/images/icon/quan (2).png",
+        "selectedIconPath": "/images/icon/quan (1).png"
+      },
+      {
+        "pagePath": "pages/main/main",
+        "text": "我的",
+        "iconPath": "/images/icon/main (2).png",
+        "selectedIconPath": "/images/icon/main (1).png"
+      }
+    ]
+  }
+}

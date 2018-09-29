@@ -1,0 +1,27 @@
+<!-- pages/favorite/favorite.wxml -->
+<import src="../../common/template/template.wxml"></import>
+<view class="container">
+  <!-- 标题 -->
+  <view class="favTitle">
+    <input class="favSearch" bindinput="remSearch" bind:confirm="toSearch" />
+    <view class="conso {{consolePlat?'consoed':''}}" bind:tap="filterManager">{{consoMsg}}</view>
+  </view>
+  <!-- 精选商品展示模板 -->
+  <view class="featuredWrap">
+    <block wx:for="{{featuredComList}}" wx:key="id">
+      <template is="featuredComList" data="{{item,favPage,shopId,consolePlat,index:index}}"></template>
+    </block>
+    <view class="noGoods" wx:if="{{featuredComList.length==0}}">
+      <image src="/images/nofavs.png" mode="widthFix" />
+    </view>
+    <!-- 返回顶部 -->
+    <view class="toTop" bind:tap="toTop" wx:if="{{showTop}}">︿</view>
+  </view>
+  <!-- 商品编辑 -->
+  <view class="consolePlatform" wx:if="{{consolePlat&&featuredComList.length!=0}}">
+    <view class="selectedAll" bind:tap="selectAll">全选</view>
+    <view class="delComs" bind:tap="deleteList">删除</view>
+  </view>
+  <!-- 全屏遮罩 -->
+  <template is="bigWrap" data="{{sureBuy,titleMsg,copysuccess}}"></template>
+</view>

@@ -1,0 +1,10 @@
+var filter = {
+    toInt: function(value) {
+      return Math.floor(value.toFixed(2));
+    }
+  };
+  
+  module.exports = {
+    toInt: filter.toInt
+  };
+  

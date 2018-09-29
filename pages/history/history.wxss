@@ -1,0 +1,52 @@
+/* pages/history/history.wxss */
+@import "/pages/favorite/favorite.wxss";
+
+.favTitle {
+  text-align: center;
+  font-size: 34rpx;
+}
+
+.conso {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+/* 商品 */
+.footprints {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  background: #fff;
+  overflow: hidden;
+}
+
+.footprint {
+  width: 30%;
+  margin: 10rpx 1.6%;
+  font-size: 28rpx;
+  box-shadow: 0rpx 0rpx 4rpx rgba(0, 0, 0, 0.2);
+}
+
+.footprint > image {
+  width: 100%;
+}
+
+.footprintMsg {
+  position: relative;
+  height: 50rpx;
+  line-height: 50rpx;
+  color: #d34353;
+}
+
+.delBtn {
+  position: absolute;
+  top: 0;
+  right: 0rpx;
+  width: 80rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  color: #333;
+  font-size: 24rpx;
+}

@@ -1,0 +1,9 @@
+/* pages/result/result.wxss */
+@import "/pages/index/index.wxss";
+.header {
+  border-bottom: 1px solid #f2f2f2;
+}
+.search {
+  width: 600rpx;
+  border-radius: 35rpx 0 0 35rpx;
+}

@@ -1,0 +1,45 @@
+<!-- pages/search/search.wxml -->
+<import src="/common/template/template.wxml"></import>
+<view class="container">
+    <!-- 顶部搜索 -->
+    <view class="header">
+        <view class="goods {{shopId==0?'seleted':''}}" bind:tap="changeShop" id="0">拼多多</view>
+        <view class="jd {{shopId==1?'seleted':''}}" bind:tap="changeShop" id="1">京东</view>
+        <view class="searchWrap">
+            <input class="search" placeholder="输入关键词或粘贴拼多多/京东商品名称" auto-focus="true" confirm-type="search" bindinput="remSearch" bind:confirm="goSearch" />
+            <view class="searchBtn" bind:tap="goSearch">搜索</view>
+        </view>
+    </view>
+    <!-- 热门搜索 -->
+    <view class="hotSearchWrap">
+        <view class="hotTitle">
+            <image src="/images/hotSearch.png" />
+            热门搜索
+        </view>
+        <view class="hotSearch">
+            <block wx:for="{{menu}}" wx:key="id">
+                <view class="hotSearchList" bind:tap="goHotSearch" id="{{item.id}}">
+                    {{item.name}}
+                </view>
+            </block>
+        </view>
+    </view>
+    <!-- 搜索历史 -->
+    <view class="searchHistoryWrap">
+        <view class="historyTitle">
+            <image src="/images/historySearch.png" />
+            搜索历史
+            <view class="clearAll" bind:tap="deleteAll">清空</view>
+        </view>
+        <!-- 搜索历史列表 -->
+        <view class="historyWrap">
+            <block wx:for="{{historys}}" wx:key="id">
+                <view class="historyList" data-index="{{index}}" bind:tap="goHisSearch">
+                    <view class="hitoryName">{{item}}</view>
+                    <view class="delete" catch:tap="delete" data-index="{{index}}">x</view>
+                </view>
+            </block>
+            <view class="noHistory" wx:if="{{historys.length==0}}">暂时没有记录</view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,14 @@
+<!-- pages/quan/quan.wxml -->
+<view class="container">
+    <!-- 顶部 -->
+    <view class="headerBg"></view>
+    <!-- 搜索栏 -->
+    <view class="header">
+        <view class="goods {{shopId==0?'seleted':''}}" bind:tap="changeShop" id="0">拼多多</view>
+        <view class="jd {{shopId==1?'seleted':''}}" bind:tap="changeShop" id="1">京东</view>
+        <view class="searchWrap">
+            <input class="search" placeholder="输入关键词或粘贴拼多多/京东商品名称" bind:tap="toSearch" />
+            <!-- <view class="searchBtn">搜索</view> -->
+        </view>
+    </view>
+</view>

@@ -1,0 +1,30 @@
+<!-- pages/main/main.wxml -->
+<view class="container">
+    <!-- 顶部 -->
+    <view class="header">
+        <image class="userImg" src="{{userInfo.avatarUrl}}" />
+        <view class="userName">{{userInfo.nickName}}</view>
+    </view>
+    <!-- 底部工具 -->
+    <view class="tools">
+        <view class="toolsTitle">我的工具</view>
+        <!-- 我的工具 -->
+        <view class="toolsWrap">
+            <block wx:for="{{tools}}" wx:key="id">
+                <navigator class="toolList" url="{{item.url}}" hover-class="navigator-hover">
+                    <image src="{{item.pic}}" class="toolImg" />
+                    <view class="toolName">{{item.name}}</view>
+                </navigator>
+            </block>
+            <view class="toolList">
+                <button class="shareBtn" open-type="share">分享</button>
+                <image src="/images/share.png" class="toolImg" />
+                <view class="toolName">分享给好友</view>
+            </view>
+        </view>
+    </view>
+    <!-- 绘图 -->
+    <view style='width:0px;height:0px;overflow:hidden;'>
+        <canvas canvas-id="shareImg" style="width:700px;height:710px"></canvas>
+    </view>
+</view>

@@ -1,0 +1,335 @@
+/* 顶部搜索 */
+.header {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 52rpx 40rpx 8rpx;
+  background: #fff;
+}
+
+.searchWrap {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+  height: 70rpx;
+  line-height: 70rpx;
+  border-radius: 31px;
+  overflow: hidden;
+}
+
+.search {
+  box-sizing: border-box;
+  height: 70rpx;
+  line-height: 70rpx;
+  width: 100%;
+  font-size: 24rpx;
+  border: solid 6rpx #ff4e66;
+  border-radius: 35rpx;
+  padding-left: 60rpx;
+  background-image: url("http://pbn1t9k4c.bkt.clouddn.com/search.png");
+  background-repeat: no-repeat;
+  background-size: 35rpx;
+  background-origin: content-box;
+  background-position: -40rpx;
+}
+
+.searchBtn {
+  width: 18%;
+  background: #ff4e66;
+  color: #fff;
+  text-align: center;
+  font-size: 28rpx;
+}
+
+.goods,
+.jd {
+  position: absolute;
+  bottom: 73rpx;
+  left: 70rpx;
+  width: 120rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 28rpx;
+  text-align: center;
+}
+
+.jd {
+  left: 190rpx;
+}
+
+.seleted {
+  background: #ff4e66;
+  color: #fff;
+  border-radius: 15rpx 15rpx 0 0;
+}
+
+/* ************************精选商品*********************** */
+.featuredWrap {
+  position: relative;
+  width: 100%;
+  background: #fff;
+}
+
+.featuredCom {
+  box-sizing: border-box;
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+  padding: 20rpx 20rpx;
+  border-top: 1px solid #eee;
+}
+
+.consoleCom {
+  position: absolute;
+  top: 80rpx;
+  left: 10rpx;
+  width: 90rpx;
+  height: 160rpx;
+  line-height: 160rpx;
+  text-align: center;
+  transition: 0.2s;
+}
+
+.consoleCom icon {
+  width: 100%;
+  height: 100%;
+}
+
+.featuredImg {
+  position: relative;
+  width: 240rpx;
+  transition: 0.2s;
+  margin-top: 10rpx;
+}
+
+.featuredImg > .comImg {
+  width: 240rpx;
+  height: 240rpx;
+}
+
+.featuredImg > .integral {
+  position: absolute;
+  right: 12rpx;
+  top: 0;
+  width: 34rpx;
+  height: 43rpx;
+}
+
+.score {
+  position: absolute;
+  top: 12rpx;
+  right: 22rpx;
+  font-size: 18rpx;
+  color: #fff;
+}
+
+.featuredComDetail {
+  width: 420rpx;
+  margin-left: 20rpx;
+  transition: 0.2s;
+}
+
+.consoleIng {
+  transform: translateX(90rpx);
+}
+
+.featuredName {
+  height: 80rpx;
+  line-height: 40rpx;
+  overflow: hidden;
+  font-size: 26rpx;
+  margin-bottom: 15rpx;
+  margin-top: 10rpx;
+}
+
+.shopImgJd,
+.shopImgPdd {
+  height: 30rpx;
+  vertical-align: middle;
+  margin-top: -5rpx;
+}
+
+.shopImgJd {
+  width: 60rpx;
+}
+
+.shopImgPdd {
+  width: 100rpx;
+}
+
+.goHongWrap {
+  font-size: 24rpx;
+  color: #818181;
+}
+
+.goHongWrap view {
+  display: inline-block;
+}
+
+.hadBuy {
+  margin-left: 22%;
+}
+
+.priceWrap {
+  margin-bottom: 25rpx;
+}
+
+.priceShow {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.priceShow view {
+  display: inline-block;
+}
+
+.priceNow {
+  font-weight: bold;
+  font-size: 30rpx;
+  color: #d34353;
+}
+
+.priceAgo {
+  margin-left: 10rpx;
+  font-size: 24rpx;
+  text-decoration: line-through;
+  color: #666;
+}
+
+.coupon {
+  width: 100rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  font-size: 22rpx;
+  text-align: center;
+  color: #fff;
+  margin-top: 20rpx;
+  background-image: url("http://pbn1t9k4c.bkt.clouddn.com/couponBg.png");
+  background-repeat: no-repeat;
+  background-size: 100rpx 40rpx;
+}
+
+.favPage {
+  position: absolute;
+  right: 180rpx;
+  bottom: 50rpx;
+  width: 48rpx;
+  height: 40rpx;
+  overflow: hidden;
+}
+
+.tobuyBtn {
+  position: absolute;
+  right: 28rpx;
+  bottom: 45rpx;
+  width: 118rpx;
+  height: 48rpx;
+  padding: 0 5rpx;
+  line-height: 50rpx;
+  color: #ff4e66;
+  text-align: center;
+  font-size: 24rpx;
+  border: 1px solid #ff4e66;
+  border-radius: 4rpx;
+}
+
+/* ************************全屏遮罩****************************** */
+.bigWrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 999;
+}
+
+.successMsg {
+  position: fixed;
+  width: 530rpx;
+  height: 500rpx;
+  top: 50%;
+  left: 50%;
+  margin-top: -250rpx;
+  margin-left: -265rpx;
+  overflow: hidden;
+  font-size: 30rpx;
+  background-image: url("http://pbn1t9k4c.bkt.clouddn.com/toastBg.png");
+  background-size: 530rpx 500rpx;
+}
+.copySuccess {
+  box-sizing: border-box;
+  position: relative;
+  top: 160rpx;
+  width: 100%;
+  height: 340rpx;
+  padding: 20rpx;
+}
+
+.successTitle {
+  text-align: center;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 34rpx;
+  color: #d34353;
+}
+
+.shopMsg {
+  margin-top: 20rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color: #999;
+}
+
+.successBtn {
+  margin-top: 60rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.goBuyWay,
+.iKown {
+  width: 160rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  border: 2rpx solid;
+}
+
+.goBuyWay {
+  color: #60df69;
+  border-color: #60df69;
+}
+
+.iKown {
+  color: #d34353;
+  border-color: #d34353;
+}
+.iKown2 {
+  width: 80%;
+  height: 60rpx;
+  margin: 80rpx auto 0;
+  line-height: 60rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  border: 2rpx solid;
+  color: #d34353;
+  border-color: #d34353;
+}
+/* 没有商品提示 */
+.noGoods {
+  width: 100%;
+  height: 200rpx;
+  overflow: hidden;
+}
+
+.noGoods > image {
+  width: 100%;
+}

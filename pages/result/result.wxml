@@ -1,0 +1,47 @@
+<!-- pages/result/result.wxml -->
+<import src="../../common/template/template.wxml"></import>
+<view class="container">
+    <!-- 搜索栏 -->
+    <view class="header">
+        <view class="goods {{shopId==0?'seleted':''}}" bind:tap="changeShop" id="0">拼多多</view>
+        <view class="jd {{shopId==1?'seleted':''}}" bind:tap="changeShop" id="1">京东</view>
+        <view class="searchWrap">
+            <input class="search" placeholder="{{searchValue?searchValue:'输入关键词或粘贴拼多多/京东商品名称'}}" confirm-type="search" bindinput="remSearch" bind:confirm="goSearch" />
+            <view class="searchBtn" bind:tap="goSearch">搜索</view>
+        </view>
+    </view>
+    <!-- 商品 -->
+    <view class="section">
+        <!-- 条件筛选 -->
+        <!-- <view class="filter" wx:if="{{shopId==0}}">
+            <view class="filterList {{filterCount==0?'filterListed':''}}" id="0" bind:tap="changeFilter">
+                精选
+            </view>
+            <view class="filterList {{filterCount==1?'filterListed':''}}" id="1" bind:tap="changeFilter">
+                销量
+            </view>
+            <view class="filterList price {{filterCount==2?'filterListed':''}}" id="2" bind:tap="changeFilter">
+                价格
+                <view class="priceBefore {{filterCount==2&&priceSort==0?'priceSeca':''}}"></view>
+                <view class="priceAfter {{filterCount==2&&priceSort==1?'priceSeca':''}}"></view>
+            </view>
+            <view class="filterList {{filterCount==3?'filterListed':''}}" id="3" bind:tap="changeFilter">
+                券金额
+            </view>
+        </view> -->
+        <view class="title">精选商品</view>
+        <!-- 精选商品展示模板 -->
+        <view class="featuredWrap">
+            <block wx:for="{{featuredComList}}" wx:key="id">
+                <template is="featuredComList" data="{{item,favPage,shopId}}"></template>
+            </block>
+            <view class="noGoods" wx:if="{{nogoods}}">
+                <image src="/images/nogods.png" mode="widthFix" />
+            </view>
+            <!-- 返回顶部 -->
+            <view class="toTop" bind:tap="toTop" wx:if="{{showTop}}">︿</view>
+        </view>
+    </view>
+    <!-- 遮罩 -->
+    <template is="bigWrap" data="{{sureBuy,titleMsg,copysuccess}}"></template>
+</view>

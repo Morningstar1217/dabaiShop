@@ -1,0 +1,23 @@
+<!-- pages/history/history.wxml -->
+<view class="container">
+    <!-- 标题 -->
+    <view class="favTitle">
+        我的足迹
+        <view class="conso" bind:tap="clearFoot">清空</view>
+    </view>
+    <!-- 我的足迹商品 -->
+    <view class="footprints">
+        <block wx:for="{{footprint}}" wx:key="id">
+            <view class="footprint">
+                <image src="{{item.pic}}" mode="widthFix" />
+                <view class="footprintMsg">
+                    ￥{{item.price}}
+                    <view class="delBtn" bind:tap="delete" data-index="{{index}}">删除</view>
+                </view>
+            </view>
+        </block>
+        <view class="noGoods" wx:if="{{footprint.length==0}}">
+            <image src="/images/nofoot.png" mode="widthFix" />
+        </view>
+    </view>
+</view>

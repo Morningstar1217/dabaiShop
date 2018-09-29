@@ -1,0 +1,14 @@
+<view class="container">
+    <!-- 海报 -->
+    <view class="header">
+        <image src="/images/poster.png" mode="aspectFill" />
+    </view>
+    <!-- 提示 -->
+    <view class="prompt">
+        <view class="title">提示</view>
+        <view class="title2">申请使用当前微信登录小程序</view>
+        <view class="title3">登录后，可获取更好的体验以及领取优惠券</view>
+    </view>
+    <!-- 授权 -->
+    <button class="btn" open-type="getUserInfo" bind:getuserinfo="getUserInfo">确认登录</button>
+</view>

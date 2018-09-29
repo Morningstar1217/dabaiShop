@@ -1,0 +1,113 @@
+/* pages/search/search.wxss */
+@import "../../common/template/template.wxss";
+.header {
+  border-bottom: 1px solid #f2f2f2;
+}
+.search {
+  width: 600rpx;
+  border-radius: 35rpx 0 0 35rpx;
+}
+/* 热门搜索 */
+.hotSearchWrap {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10rpx;
+  background: #fff;
+}
+
+.hotTitle,
+.historyTitle {
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  height: 80rpx;
+  padding: 10rpx 20rpx;
+  line-height: 60rpx;
+  font-size: 30rpx;
+  overflow: hidden;
+}
+
+.hotTitle > image {
+  width: 38rpx;
+  height: 40rpx;
+  vertical-align: middle;
+  margin-top: -10rpx;
+  margin-right: 10rpx;
+}
+
+.hotSearch {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 10rpx 20rpx;
+  font-size: 28rpx;
+}
+
+.hotSearchList {
+  /* width: 100rpx; */
+  margin: 10rpx 20rpx 10rpx 0;
+  padding: 10rpx 15rpx;
+  text-align: center;
+  border: 1rpx solid #bfbfbf;
+  border-radius: 10rpx;
+}
+/* 搜索历史 */
+.searchHistoryWrap {
+  width: 100%;
+  margin-top: 10rpx;
+  background: #fff;
+}
+.historyTitle {
+  border-bottom: 1rpx solid #f2f2f2;
+}
+
+.historyTitle > image {
+  width: 40rpx;
+  height: 40rpx;
+  vertical-align: middle;
+}
+.clearAll {
+  float: right;
+  font-size: 26rpx;
+}
+/* 历史列表 */
+.historyWrap {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.historyList {
+  box-sizing: border-box;
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  padding-left: 80rpx;
+  font-size: 28rpx;
+  color: #999;
+  overflow: hidden;
+  border-bottom: 1rpx solid #f2f2f2;
+}
+
+.hitoryName {
+  display: inline-block;
+  width: 400rpx;
+  overflow: hidden;
+  white-space: normal;
+  text-overflow: ellipsis;
+}
+
+.delete {
+  float: right;
+  width: 100rpx;
+  text-align: center;
+}
+
+.noHistory {
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 28rpx;
+  text-align: center;
+  color: #999;
+}
