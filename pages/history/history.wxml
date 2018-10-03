@@ -13,9 +13,7 @@
         <block wx:for="{{footprint}}" wx:key="id">
             <template is="featuredComList" data="{{item,favPage,shopId,consolePlat,index:index}}"></template>
         </block>
-        <view class="noGoods" wx:if="{{footprint.length==0}}">
-            <image src="/images/nofoot.png" mode="widthFix" />
-        </view>
+        <view class="noGoods" wx:if="{{footprint.length==0}}" style="background-image:url('http://pbn1t9k4c.bkt.clouddn.com/nofoot.png')"></view>
         <!-- 返回顶部 -->
         <view class="toTop" bind:tap="toTop" wx:if="{{showTop}}">︿</view>
     </view>

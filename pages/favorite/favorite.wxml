@@ -3,17 +3,17 @@
 <view class="container">
   <!-- 标题 -->
   <view class="favTitle">
-    <input class="favSearch" bindinput="remSearch" bind:confirm="toSearch" />
-    <view class="conso {{consolePlat?'consoed':''}}" bind:tap="filterManager">{{consoMsg}}</view>
+    <input class="favSearch" bindinput="remSearch" bind:confirm="toSearch" placeholder="搜索收藏的产品" />
+    <view class="conso {{consolePlat&&featuredComList.length!=0?'consoed':''}}" bind:tap="filterManager">
+      {{consolePlat&&featuredComList.length!=0?'完成':'编辑'}}
+    </view>
   </view>
   <!-- 精选商品展示模板 -->
   <view class="featuredWrap">
     <block wx:for="{{featuredComList}}" wx:key="id">
       <template is="featuredComList" data="{{item,favPage,shopId,consolePlat,index:index}}"></template>
     </block>
-    <view class="noGoods" wx:if="{{featuredComList.length==0}}">
-      <image src="/images/nofavs.png" mode="widthFix" />
-    </view>
+    <view class="noGoods" wx:if="{{featuredComList.length==0}}" style="background-image:url('http://pbn1t9k4c.bkt.clouddn.com/nofavs.png')"></view>
     <!-- 返回顶部 -->
     <view class="toTop" bind:tap="toTop" wx:if="{{showTop}}">︿</view>
   </view>

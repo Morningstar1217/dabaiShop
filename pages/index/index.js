@@ -45,10 +45,10 @@ Page({
       }
     ],
     imgUrls: [
-      "/images/banner1.jpg",
-      "/images/banner2.jpg",
-      "/images/banner3.jpg",
-      "/images/banner4.jpg"
+      "http://pbn1t9k4c.bkt.clouddn.com/banner1.jpg",
+      "http://pbn1t9k4c.bkt.clouddn.com/banner2.jpg",
+      "http://pbn1t9k4c.bkt.clouddn.com/banner3.jpg",
+      "http://pbn1t9k4c.bkt.clouddn.com/banner4.jpg"
     ],
     count: 0, //选择分类
     menuFlag: true, //是否打开全部分类

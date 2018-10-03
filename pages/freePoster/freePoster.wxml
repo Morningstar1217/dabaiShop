@@ -1,0 +1,5 @@
+<!-- pages/freePoster/freePoster.wxml -->
+<view class="container">
+    <view class="title">新用户免单</view>
+    <view class="freePoster" style="height:{{imgHei}}px" bind:tap="save"></view>
+</view>

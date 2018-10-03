@@ -78,9 +78,8 @@
   height: 394rpx;
 }
 
-swiper-item > image {
-  width: 100%;
-  height: 394rpx;
+swiper-item {
+  background-size: 100%;
 }
 /* 广告 */
 .section .ad {

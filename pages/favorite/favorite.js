@@ -12,6 +12,7 @@ Page({
     goodsPromotionUrl: app.globalData.goodsPromotionUrl, //拼多多优惠券转链
     getJdCoupon: app.globalData.getJdCoupon, //生成京东联盟优惠券地址
     featuredComList: [], //商品列表
+    favs: [], //收藏列表记录
     favPage: true, //收藏页面不显示收藏
     titleMsg: "", //点击复制优惠券提示文字
     sureBuy: false, //遮罩是否打开
@@ -23,7 +24,8 @@ Page({
     delFlag: false, //是否选中
     consolePlat: false, //平台是否显示
     selectAllStatus: false, //全选
-    consoMsg: "编辑" //编辑收藏
+    consoMsg: "编辑", //编辑收藏
+    keyword: "" //搜索关关键字
   },
 
   /**
@@ -55,7 +57,8 @@ Page({
           const featuredComList = res.data.data;
           featuredComList.reverse();
           that.setData({
-            featuredComList: featuredComList
+            featuredComList: featuredComList,
+            favs: featuredComList
           });
         }
       }
@@ -200,15 +203,6 @@ Page({
     this.setData({
       consolePlat: !this.data.consolePlat
     });
-    if (this.data.consolePlat) {
-      this.setData({
-        consoMsg: "完成"
-      });
-    } else {
-      this.setData({
-        consoMsg: "编辑"
-      });
-    }
   },
   //是否显示返回顶部
   onPageScroll: function(e) {
@@ -230,5 +224,30 @@ Page({
     this.setData({
       showTop: false
     });
+  },
+  //保存搜索关键字
+  remSearch: function(e) {
+    this.setData({
+      keyword: e.detail.value
+    });
+  },
+  //搜索收藏产品
+  toSearch: function() {
+    var favs = this.data.favs;
+    const keyword = this.data.keyword;
+    this.setData({ consolePlat: false });
+    if (!keyword) {
+      this.getFavs();
+    } else {
+      var arr2 = [];
+      favs.forEach(ele => {
+        if (ele.title.match(keyword)) {
+          arr2.unshift(ele);
+        }
+      });
+      this.setData({
+        featuredComList: arr2
+      });
+    }
   }
 });

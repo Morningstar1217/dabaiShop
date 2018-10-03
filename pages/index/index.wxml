@@ -32,9 +32,7 @@
     <!-- 轮播图区域 -->
     <swiper indicator-dots="true" autoplay="true" interval="5000" duration="500" class="banner" indicator-color="#fff" indicator-active-color="#d34353">
         <block wx:for="{{imgUrls}}" wx:key="id">
-            <swiper-item>
-                <image class="swiper-image" src="{{item}}" mode="widthFix" />
-            </swiper-item>
+            <swiper-item style="background-image:url('{{item}}')"></swiper-item>
         </block>
     </swiper>
     <!-- 广告 -->
@@ -61,9 +59,7 @@
             <block wx:for="{{featuredComList}}" wx:key="id">
                 <template is="featuredComList" data="{{item,favPage,shopId}}"></template>
             </block>
-            <view class="noGoods" wx:if="{{nogoods}}">
-                <image src="/images/nogods.png" mode="widthFix" />
-            </view>
+            <view class="noGoods" wx:if="{{nogoods}}" style="background-image: url('http://pbn1t9k4c.bkt.clouddn.com/nogods.png');"></view>
             <!-- 返回顶部 -->
             <view class="toTop" bind:tap="toTop" wx:if="{{showTop}}">︿</view>
         </view>

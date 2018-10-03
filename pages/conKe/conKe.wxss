@@ -1,0 +1,17 @@
+/* pages/conKe/conKe.wxss */
+.freePoster {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(255, 73, 82);
+  background-image: url("http://pbn1t9k4c.bkt.clouddn.com/conKe.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.title {
+  height: 120rpx;
+  line-height: 120rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color: #333;
+}
