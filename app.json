@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/getQuan/getQuan",
     "pages/conKe/conKe",
     "pages/favorite/favorite",
     "pages/freePoster/freePoster",

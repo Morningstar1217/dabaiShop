@@ -1,0 +1,5 @@
+<!-- pages/getQuan/getQuan.wxml -->
+<!-- <web-view src="{{url}}" /> -->
+<navigator target="miniProgram" app-id="wx18a2ac992306a5a4" path="pages/apps/largess/detail?accountId=2849563" open-type='navigate'>
+    跳转
+</navigator>

@@ -277,6 +277,9 @@ Page({
   showTitle: function(flag) {
     const that = this;
     if (flag) {
+      // wx.navigateTo({
+      //   url: "/pages/getQuan/getQuan?sku=" + flag
+      // });
       wx.setClipboardData({
         data: flag,
         success: function() {
