@@ -26,11 +26,13 @@
           <view class="featuredName">
             <view wx:if="{{!favPage}}">
               <image src="/images/jd.png" class="shopImgJd" wx:if="{{shopId==1}}" />
-              <image src="/images/pdd.png" class="shopImgPdd" wx:if="{{shopId==0}}" /> {{item.title}}
+              <image src="/images/pdd.png" class="shopImgPdd" wx:if="{{shopId==0}}" />
+              {{item.title}}
             </view>
             <view wx:else>
               <image src="/images/jd.png" class="shopImgJd" wx:if="{{item.pingtai=='jd'}}" />
-              <image src="/images/pdd.png" class="shopImgPdd" wx:if="{{item.pingtai=='pdd'}}" /> {{item.title}}
+              <image src="/images/pdd.png" class="shopImgPdd" wx:if="{{item.pingtai=='pdd'}}" />
+              {{item.title}}
             </view>
           </view>
           <view class="priceShow">
@@ -41,8 +43,7 @@
             <view class="coupon">{{filter.toInt(item.market_price-item.price)}}元券</view>
           </view>
         </view>
-        <image src="/images/favpage1.png" wx:if="{{!favPage}}" class="favPage" catch:tap="setCol" data-sku="{{item.sku}}" data-title="{{item.title}}" data-couponLink="{{item.couponlink}}" data-marketPrice="{{item.market_price}}" data-price="{{item.price}}" data-pic="{{item.pic}}"
-        />
+        <image src="/images/favpage1.png" wx:if="{{!favPage}}" class="favPage" catch:tap="setCol" data-sku="{{item.sku}}" data-title="{{item.title}}" data-couponLink="{{item.couponlink}}" data-marketPrice="{{item.market_price}}" data-price="{{item.price}}" data-pic="{{item.pic}}" />
         <view class="tobuyBtn" bind:tap="goBuy" id="{{item.sku}}" data-url="{{item.couponlink}}" data-pingtai="{{item.pingtai}}" data-title="{{item.title}}" data-marketPrice="{{item.market_price}}" data-price="{{item.price}}" data-pic="{{item.pic}}">
           立即领券
         </view>
@@ -60,3 +61,4 @@
   <!-- 全屏遮罩 -->
   <template is="bigWrap" data="{{sureBuy,titleMsg,copysuccess}}"></template>
 </view>
+<wxs src="../../common/filter.wxs" module="filter"></wxs>
