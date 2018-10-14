@@ -1,12 +1,12 @@
 {
   "pages": [
+    "pages/main/main",
     "pages/index/index",
     "pages/getQuan/getQuan",
     "pages/conKe/conKe",
     "pages/favorite/favorite",
     "pages/freePoster/freePoster",
     "pages/history/history",
-    "pages/main/main",
     "pages/quan/quan",
     "pages/search/search",
     "pages/result/result",

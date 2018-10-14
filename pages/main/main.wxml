@@ -16,15 +16,16 @@
                     <view class="toolName">{{item.name}}</view>
                 </navigator>
             </block>
-            <view class="toolList">
-                <button class="shareBtn" open-type="share">分享</button>
+            <view class="toolList" bind:tap="eventDraw">
+                <!-- <button class="shareBtn" open-type="share">分享</button> -->
                 <image src="/images/share.png" class="toolImg" />
                 <view class="toolName">分享给好友</view>
             </view>
         </view>
     </view>
     <!-- 绘图 -->
-    <view style='width:0px;height:0px;overflow:hidden;'>
-        <canvas canvas-id="shareImg" style="width:700px;height:710px"></canvas>
+    <view class="bigWrap" wx:if="{{showFlag}}" bind:tap="hideWrap">
+        <image src="{{shareImage}}" class="share-image" mode="widthFix" wx:if="{{shareImage}}" catch:tap="save"></image>
     </view>
+    <canvasdrawer painting="{{painting}}" class="canvasdrawer" bind:getImage="eventGetImage" />
 </view>

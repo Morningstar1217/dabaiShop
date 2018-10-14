@@ -73,6 +73,8 @@ Page({
   },
   onLoad: function() {
     this.getGoodsList();
+    funs.getJdList(1);
+    funs.getPddList(1);
   },
   //打开搜索页面
   toSearch: function(e) {
@@ -144,7 +146,7 @@ Page({
       sureBuy: false
     });
   },
-  //获取商品链接
+  //获取pdd商品链接
   getGoodsList: function() {
     if (this.data.count == 0) {
       const goodsUrl = this.data.host + this.data.getGoodsList;
@@ -330,7 +332,7 @@ Page({
         unionid: unionid,
         sku: dataset.sku,
         title: dataset.title,
-        couponLink: dataset.couponLink,
+        couponLink: dataset.couponlink,
         market_price: dataset.marketprice,
         price: dataset.price,
         pic: dataset.pic,

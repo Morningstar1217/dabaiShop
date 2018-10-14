@@ -1,4 +1,7 @@
 {
   "navigationBarBackgroundColor": "#f6233b",
-  "navigationBarTextStyle": "#fff"
+  "navigationBarTextStyle": "#fff",
+  "usingComponents": {
+    "canvasdrawer": "/components/canvasdrawer/canvasdrawer"
+  }
 }

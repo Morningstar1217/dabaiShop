@@ -83,3 +83,21 @@
 .navigator-hover {
   background: #fff;
 }
+
+.share-image {
+  position: fixed;
+  left: 50%;
+  top: 40rpx;
+  margin-left: -325rpx;
+  width: 650rpx;
+}
+
+.bigWrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 999;
+}

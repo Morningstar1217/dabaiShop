@@ -32,7 +32,10 @@ Page({
         pic: "/images/message.png",
         url: "/pages/conKe/conKe"
       }
-    ]
+    ],
+    painting: {},
+    shareImage: "",
+    showFlag: false
   },
 
   /**
@@ -61,5 +64,121 @@ Page({
         // 转发失败
       }
     };
+  },
+  //绘图
+  eventDraw() {
+    wx.showLoading({
+      title: "绘制分享图片中",
+      mask: true
+    });
+    const userInfo = wx.getStorageSync("userInfo");
+    this.setData({
+      painting: {
+        width: 375,
+        height: 555,
+        views: [
+          {
+            type: "image",
+            url: "/images/background.jpeg",
+            top: 0,
+            left: 0,
+            width: 375,
+            height: 555
+          },
+          {
+            type: "image",
+            url: userInfo.avatarUrl,
+            top: 27.5,
+            left: 29,
+            width: 55,
+            height: 55
+          },
+          {
+            type: "image",
+            url: "/images/avatar_cover.jpeg",
+            top: 27.5,
+            left: 29,
+            width: 55,
+            height: 55
+          },
+          {
+            type: "text",
+            content: "您的好友【" + userInfo.nickName + "】",
+            fontSize: 16,
+            color: "#402D16",
+            textAlign: "left",
+            top: 33,
+            left: 96,
+            bolder: true
+          },
+          {
+            type: "text",
+            content: "发现一个好地方，邀请你一起来~",
+            fontSize: 15,
+            color: "#563D20",
+            textAlign: "left",
+            top: 59.5,
+            left: 96
+          },
+          {
+            type: "image",
+            url: "/images/pic.jpeg",
+            top: 136,
+            left: 42.5,
+            width: 290,
+            height: 186
+          },
+          {
+            type: "image",
+            url: "/images/wxacode.jpg",
+            top: 443,
+            left: 85,
+            width: 68,
+            height: 68
+          },
+
+          {
+            type: "text",
+            content: "长按识别图中二维码加入大白之家",
+            fontSize: 14,
+            color: "#383549",
+            textAlign: "left",
+            top: 460,
+            left: 165.5,
+            lineHeight: 20,
+            MaxLineNumber: 2,
+            breakWord: true,
+            width: 125
+          }
+        ]
+      }
+    });
+  },
+  eventGetImage(event) {
+    console.log(event);
+    wx.hideLoading();
+    const { tempFilePath, errMsg } = event.detail;
+    if (errMsg == "canvasdrawer:ok") {
+      this.setData({
+        shareImage: tempFilePath,
+        showFlag: true
+      });
+    } else if (errMsg == "canvasdrawer:samme params") {
+      this.setData({
+        showFlag: true
+      });
+    }
+  },
+  //隐藏
+  hideWrap: function() {
+    this.setData({
+      showFlag: false
+    });
+  },
+  //保存
+  save: function() {
+    wx.previewImage({
+      urls: [this.data.shareImage]
+    });
   }
 });
