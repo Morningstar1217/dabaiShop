@@ -1,4 +1,5 @@
 // pages/quan/quan.js
+const app = getApp()
 Page({
   /**
    * 页面的初始数据
@@ -13,20 +14,30 @@ Page({
         shopId: 0,
         featuredComList: [],
         currentPage: 1
-      });
+      })
     } else {
       this.setData({
         shopId: 1,
         featuredComList: [],
         currentPage: 1
-      });
+      })
     }
   },
   //打开搜索页面
   toSearch: function(e) {
-    const shopId = this.data.shopId;
+    const shopId = this.data.shopId
     wx.navigateTo({
-      url: "/pages/search/search?shopId=" + shopId
-    });
+      url: '/pages/search/search?shopId=' + shopId
+    })
+  },
+  //分享
+  onShareAppMessage: function() {
+    return {
+      title: app.globalData.shareProfile,
+      path: '/pages/index/index',
+      imageUrl: app.globalData.shareImg,
+      success: function(res) {},
+      fail: function(res) {}
+    }
   }
-});
+})

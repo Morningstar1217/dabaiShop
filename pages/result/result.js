@@ -1,5 +1,5 @@
 // pages/result/result.js
-const app = getApp();
+const app = getApp()
 Page({
   /**
    * 页面的初始数据
@@ -14,12 +14,12 @@ Page({
     getJdCoupon: app.globalData.getJdCoupon, //生成京东联盟优惠券地址
     setFavorite: app.globalData.setFavorite, //添加收藏
     featuredComList: [], //商品列表
-    titleMsg: "", //点击复制优惠券提示文字
+    titleMsg: '', //点击复制优惠券提示文字
     sureBuy: false, //遮罩是否打开
     currentPage: 1, //请求的当前页面页码
     showTop: false, //是否显示返回顶部按钮
     shopId: 0, //选择购物平台 0 为拼多多 1 为京东
-    searchValue: "", //搜索输入
+    searchValue: '', //搜索输入
     copysuccess: false, //是否复制成功
     nogoods: false, //没有商品
     //历史记录
@@ -33,114 +33,121 @@ Page({
     this.setData({
       searchValue: options.keyword,
       shopId: options.shopId
-    });
-    this.goSearch();
+    })
+    this.goSearch()
+  },
+  onShow() {
+    let userInfo = wx.getStorageSync('userInfo')
+    if (!userInfo) {
+      app.goLoginPageTimeOut()
+      return
+    }
   },
   //记录搜索字
   remSearch: function(e) {
     this.setData({
       searchValue: e.detail.value
-    });
+    })
   },
   //切换平台
   changeShop: function(e) {
     wx.showLoading({
-      title: "请稍后..."
-    });
+      title: '请稍后...'
+    })
     if (e.currentTarget.id == 0) {
       this.setData({
         shopId: 0,
         featuredComList: [],
         currentPage: 1
-      });
-      this.getGoodsList();
+      })
+      this.getGoodsList()
     } else {
       this.setData({
         shopId: 1,
         featuredComList: [],
         currentPage: 1
-      });
-      this.getJdList();
+      })
+      this.getJdList()
     }
   },
   //搜索
   goSearch: function() {
-    var historys = wx.getStorageSync("historys");
+    var historys = wx.getStorageSync('historys')
     if (!historys) {
-      historys = [];
+      historys = []
     }
-    var keyword = this.data.searchValue;
-    historys.unshift(keyword);
+    var keyword = this.data.searchValue
+    historys.unshift(keyword)
     this.setData({
       historys: historys
-    });
+    })
     wx.setStorage({
-      key: "historys",
+      key: 'historys',
       data: historys
-    });
+    })
     this.setData({
       featuredComList: [],
       currentPage: 1
-    });
+    })
     if (this.data.shopId == 0) {
-      this.getGoodsList();
+      this.getGoodsList()
     } else {
-      this.getJdList();
+      this.getJdList()
     }
   },
   /* 复制优惠券 */
   goBuy: function(e) {
-    const sku = e.currentTarget.id;
+    const sku = e.currentTarget.id
     if (this.data.shopId == 0) {
-      const url = this.data.host + this.data.goodsPromotionUrl;
-      this.getCoupon(url, sku);
+      const url = this.data.host + this.data.goodsPromotionUrl
+      this.getCoupon(url, sku)
     } else {
-      const url = this.data.host + this.data.getJdCoupon;
-      const goodUrl = e.currentTarget.dataset.url;
-      this.getCoupon(url, sku, goodUrl);
+      const url = this.data.host + this.data.getJdCoupon
+      const goodUrl = e.currentTarget.dataset.url
+      this.getCoupon(url, sku, goodUrl)
     }
-    this.setFootprint(e);
+    this.setFootprint(e)
   },
   //足迹
   setFootprint: function(e) {
-    var footprint = wx.getStorageSync("footprint");
+    var footprint = wx.getStorageSync('footprint')
     if (!footprint) {
-      footprint = [];
+      footprint = []
     }
     const foot = {
       pic: e.currentTarget.dataset.pic,
       price: e.currentTarget.dataset.price
-    };
-    footprint.unshift(foot);
+    }
+    footprint.unshift(foot)
     wx.setStorage({
-      key: "footprint",
+      key: 'footprint',
       data: footprint
-    });
+    })
   },
   /* 关闭遮罩 */
   closeWrap: function() {
     this.setData({
       sureBuy: false
-    });
+    })
   },
   //获取商品链接
   getGoodsList: function() {
-    const goodsUrl = this.data.host + this.data.searchGoods;
-    const keyword = this.data.searchValue;
-    this.getData(goodsUrl, keyword);
+    const goodsUrl = this.data.host + this.data.searchGoods
+    const keyword = this.data.searchValue
+    this.getData(goodsUrl, keyword)
   },
   //获取京东商品链接
   getJdList: function() {
-    const goodsUrl = this.data.host + this.data.searchJdGood;
-    const keyword = this.data.searchValue;
-    this.getData(goodsUrl, keyword);
+    const goodsUrl = this.data.host + this.data.searchJdGood
+    const keyword = this.data.searchValue
+    this.getData(goodsUrl, keyword)
   },
   //获取更多
   getMoreGoodsList: function() {
     if (this.data.shopId == 0) {
-      this.getGoodsList();
+      this.getGoodsList()
     } else {
-      this.getJdList();
+      this.getJdList()
     }
   },
   //是否显示返回顶部
@@ -148,31 +155,31 @@ Page({
     if (e.scrollTop >= 500) {
       this.setData({
         showTop: true
-      });
+      })
     } else {
       this.setData({
         showTop: false
-      });
+      })
     }
   },
   //返回顶部
   toTop: function() {
     wx.pageScrollTo({
       scrollTop: 0
-    });
+    })
     this.setData({
       showTop: false
-    });
+    })
   },
   //切换条件筛选
   changeFilter: function(e) {
     this.setData({
       filterCount: e.currentTarget.id
-    });
+    })
   },
   //网络请求
   getData: function(url, name) {
-    const that = this;
+    const that = this
     wx.request({
       url: url,
       data: {
@@ -180,36 +187,36 @@ Page({
         keyword: name
       },
       header: {
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json'
       },
       success: function(res) {
         if (res.data.code == -1) {
           that.setData({
             nogoods: true
-          });
+          })
         } else {
-          const arr1 = that.data.featuredComList;
-          const arr2 = res.data.data.list;
-          arr1.push.apply(arr1, arr2);
+          const arr1 = that.data.featuredComList
+          const arr2 = res.data.data.list
+          arr1.push.apply(arr1, arr2)
           if (arr1.length == 0) {
             that.setData({
               nogoods: true
-            });
+            })
           } else {
             that.setData({
               featuredComList: arr1,
               currentPage: that.data.currentPage + 1,
               nogoods: false
-            });
+            })
           }
         }
-        wx.hideLoading();
+        wx.hideLoading()
       }
-    });
+    })
   },
   //领券
   getCoupon: function(url, sku, goodUrl) {
-    const that = this;
+    const that = this
     wx.request({
       url: url,
       data: {
@@ -217,68 +224,68 @@ Page({
         url: goodUrl
       },
       header: {
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json'
       },
       success: function(res) {
-        console.log(res);
+        console.log(res)
         if (that.data.shopId == 0) {
-          const flag = res.data.data.url;
-          that.showTitle(flag);
+          const flag = res.data.data.url
+          that.showTitle(flag)
         } else {
-          const flag = res.data.data;
-          that.showTitle(flag);
+          const flag = res.data.data
+          that.showTitle(flag)
         }
-        wx.hideLoading();
+        wx.hideLoading()
       }
-    });
+    })
   },
   //弹窗
   showTitle: function(flag) {
-    const that = this;
+    const that = this
     if (flag) {
       wx.setClipboardData({
         data: flag,
         success: function() {
-          wx.hideToast();
+          wx.hideToast()
           if (that.data.shopId == 0) {
             that.setData({
               sureBuy: true,
-              titleMsg: "拼多多",
+              titleMsg: '拼多多',
               copysuccess: true
-            });
+            })
           } else {
             that.setData({
               sureBuy: true,
-              titleMsg: "京东",
+              titleMsg: '京东',
               copysuccess: true
-            });
+            })
           }
         }
-      });
+      })
     } else {
       that.setData({
         sureBuy: true,
-        titleMsg: "该商品优惠券已被抢光~\n再看看别的商品吧",
+        titleMsg: '该商品优惠券已被抢光~\n再看看别的商品吧',
         copysuccess: false
-      });
+      })
     }
   },
   //滑动触底
   onReachBottom: function(e) {
-    this.getMoreGoodsList();
+    this.getMoreGoodsList()
   },
   //收藏
   setCol: function(e) {
-    const dataset = e.currentTarget.dataset;
-    const that = this;
-    const shopId = that.data.shopId;
-    const url = that.data.host + that.data.setFavorite;
-    const unionid = wx.getStorageSync("unionid");
+    const dataset = e.currentTarget.dataset
+    const that = this
+    const shopId = that.data.shopId
+    const url = that.data.host + that.data.setFavorite
+    const unionid = wx.getStorageSync('unionid')
     //拼多多
     if (shopId == 0) {
-      var pingtai = "pdd";
+      var pingtai = 'pdd'
     } else {
-      var pingtai = "jd";
+      var pingtai = 'jd'
     }
     wx.request({
       url: url,
@@ -293,16 +300,26 @@ Page({
         pingtai: pingtai
       },
       header: {
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json'
       },
       success: function(res) {
         if (res.data.code == 1) {
           wx.showToast({
-            title: "收藏成功",
-            icon: "success"
-          });
+            title: '收藏成功',
+            icon: 'success'
+          })
         }
       }
-    });
+    })
+  },
+  //分享
+  onShareAppMessage: function() {
+    return {
+      title: app.globalData.shareProfile,
+      path: '/pages/index/index?keyword=' + this.data.keyword + '&shopId=' + this.data.shopId,
+      imageUrl: app.globalData.shareImg,
+      success: function(res) {},
+      fail: function(res) {}
+    }
   }
-});
+})

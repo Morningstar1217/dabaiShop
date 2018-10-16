@@ -4,8 +4,8 @@
     <!-- 标题 -->
     <view class="favTitle">
         我的足迹
-        <view class="conso {{consolePlat?'consoed':''}}" bind:tap="filterManager">
-            {{consoMsg}}
+        <view class="conso {{consolePlat&&footprint.length!=0?'consoed':''}}" bind:tap="filterManager">
+            {{consolePlat&&footprint.length!=0?'完成':'编辑'}}
         </view>
     </view>
     <!-- 精选商品展示模板 -->

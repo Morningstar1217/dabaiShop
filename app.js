@@ -10,7 +10,7 @@ App({
   onHide: function() {},
   goLoginPageTimeOut: function() {
     setTimeout(function() {
-      wx.redirectTo({
+      wx.navigateTo({
         url: "/pages/start/start"
       });
     }, 1000);
@@ -27,6 +27,7 @@ App({
     setFavorite: "api.php/small.user/addfavorites", //添加收藏
     getFavorites: "api.php/small.user/getfavoriteslist", //获取收藏列表
     delFavorite: "api.php/small.user/delfavoriteslist", //删除收藏
-    shareProfile: "大白找券 —— 一个不允许你不省钱的小程序" //分享标题
+    shareProfile: "一个不允许你不省钱的小程序", //分享标题
+    shareImg:'http://pbn1t9k4c.bkt.clouddn.com/tbshareImg.jpg'
   }
 });

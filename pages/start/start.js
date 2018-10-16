@@ -1,5 +1,5 @@
 // pages/start/start.js
-const app = getApp();
+const app = getApp()
 Page({
   /**
    * 页面的初始数据
@@ -9,41 +9,36 @@ Page({
   //获取用户信息
   getUserInfo: function(e) {
     if (!e.detail.userInfo) {
-      return;
+      return
     }
-    wx.setStorageSync("userInfo", e.detail.userInfo);
-    this.login();
+    wx.setStorageSync('userInfo', e.detail.userInfo)
+    this.login()
   },
   //登录
   login: function() {
-    // let code = wx.getStorageSync("code");
-    // if (code) {
-    //   wx.switchTab({ url: "/pages/index/index" });
-    //   return;
-    // }
     wx.login({
       success: function(res) {
         if (res.code) {
           wx.request({
-            url: "https://www.97youmeitao.com/api.php/small.small/oauth",
+            url: 'https://www.97youmeitao.com/api.php/small.small/oauth',
             data: {
               code: res.code
             },
             header: {
-              "Content-Type": "application/json"
+              'Content-Type': 'application/json'
             },
             success: function(res) {
-              // console.log(res.data.unionid);
-              wx.setStorageSync("unionid", res.data.unionid);
+              wx.setStorageSync('unionid', res.data.unionid)
             }
-          });
-          wx.setStorageSync("code", res.code);
-          wx.switchTab({ url: "/pages/index/index" });
+          })
+          wx.setStorageSync('code', res.code)
+          // wx.switchTab({ url: '/pages/index/index' })
+          wx.navigateBack()
         } else {
-          console.log(res.errMsg);
+          console.log(res.errMsg)
         }
       }
-    });
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -84,4 +79,4 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function() {}
-});
+})

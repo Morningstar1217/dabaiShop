@@ -16,8 +16,8 @@
                     <view class="toolName">{{item.name}}</view>
                 </navigator>
             </block>
-            <view class="toolList" bind:tap="eventDraw">
-                <!-- <button class="shareBtn" open-type="share">分享</button> -->
+            <view class="toolList">
+                <button class="shareBtn" open-type="share">分享</button>
                 <image src="/images/share.png" class="toolImg" />
                 <view class="toolName">分享给好友</view>
             </view>
